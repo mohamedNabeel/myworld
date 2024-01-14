@@ -10,7 +10,7 @@ from django.contrib.auth.hashers import make_password, check_password
 
 class SignUpView(APIView):
     def post(self, request):
-        serializer = StudentSerializer(data=request.data, context={'request':request})
+        serializer = StudentSerializer(data=request.data, context={'request': request})
         if serializer.is_valid():
             # Hash the password before saving it to the database
             serializer.validated_data['password'] = make_password(serializer.validated_data['password'])
